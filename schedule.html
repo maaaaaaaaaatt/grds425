@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Responsive Grid Website</title>
+  <link rel="stylesheet" href="style.css">
+  <script>
+    async function fetchIcecastMetadata() {
+      try {
+        const response = await fetch('https://stream.no-soap.net/status-json.xsl'); // Update this URL to your actual Icecast server
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        const data = await response.json();
+        console.log('Data:', data);
+
+        let nowPlaying = '';
+
+        // Check if the source is an array (multiple streams) or an object (single stream)
+        if (Array.isArray(data.icestats.source)) {
+          nowPlaying = data.icestats.source[0].title || 'No metadata available';
+        } else {
+          nowPlaying = data.icestats.source.title || 'No metadata available';
+        }
+
+        // Separate title and artist
+        let [songTitle, artistName] = nowPlaying.split(' - ');
+
+        // Add quotes around the song title
+        songTitle = `"${songTitle.trim()}"`;
+
+        // Display both song title and artist name
+        document.getElementById('metadata').textContent = `Now Playing: ${songTitle} - ${artistName.trim()}`;
+      } catch (error) {
+        console.error('Error fetching Icecast metadata:', error);
+        document.getElementById('metadata').textContent = 'Out to Lunch! Be Back Soon!';
+      }
+    }
+
+    // Fetch metadata every 10 seconds
+    setInterval(fetchIcecastMetadata, 10000);
+
+    // Initial fetch
+    fetchIcecastMetadata();
+
+          // JavaScript code to update the current time
+          function updateTime() {
+            // Get the current time
+            const now = new Date();
+            
+            // Format the time as HH:MM:SS
+            const timeString = now.toLocaleTimeString();
+
+            // Place the time string inside the div
+            document.getElementById('timestamp').textContent = timeString;
+        }
+
+        // Update the time immediately when the page loads
+        updateTime();
+
+        // Update the time every second (1000 milliseconds)
+        setInterval(updateTime, 1000);
+
+  </script>
+</head>
+
+<body>
+
+  <div id="header-container">
+    <div class="header">
+      <div class="title">
+        <a href="index.html">GRDS 425</a> | Spring 2025<br>Transmission//Reception
+      </div>
+
+      <div class="status">
+        <span class="light"></span>CURRENTLY BROADCASTING AT: A.M. 1660 kHz<br>
+        NEAR: KNOXVILLE, TN, U.S.A.
+      </div>
+    </div>
+
+    <div class="menu">
+      <marquee scrollamount="5"><span
+          id="metadata"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+          id="metadata">The Current Time is: <span id="timestamp"></span> in your location</span></marquee>
+
+      <audio class="header-audio" controls>
+        <source src="https://stream.no-soap.net:443/stream" type="audio/mpeg">
+        Your browser does not support the audio tag.
+      </audio>
+    </div>
+  </div>
+
+  <span id="schedule-title">Daily Schedule:<br>
+(All times listed in EST)
+</span>
+
+  <table>
+    <thead>
+       <tr>
+          <th>Time</th>
+          <th>Program Title</th>
+          <th>Station</th>
+          <th>Notes</th>
+       </tr>
+    </thead>
+    <tbody>
+       <tr>
+          <td>00:00</td>
+          <td><em>Program Title</em></td>
+          <td><a href="">Station Name</a></td>
+          <td></td>
+       </tr>
+
+       <tr>
+          <td>01:00</td>
+          <td><em>Program Title</em></td>
+          <td><a href="">Station Name</a></td>
+          <td></td>
+       </tr>
+
+       <tr>
+          <td>02:00</td>
+          <td><em>Program Title</em></td>
+          <td><a href="">Station Name</a></td>
+          <td></td>
+       </tr>
+
+       <tr>
+          <td>03:00</td>
+          <td><em>Program Title</em></td>
+          <td><a href="">Station Name</a></td>
+          <td></td>
+       </tr>
+
+       <tr>
+          <td>04:00</td>
+          <td><em>Program Title</em></td>
+          <td><a href="">Station Name</a></td>
+          <td></td>
+       </tr>
+
+       <td>05:00</td>
+       <td><em>Program Title</em></td>
+       <td><a href="">Station Name</a></td>
+       <td></td>
+       </tr>
+
+       <td>06:00</td>
+       <td><em>Program Title</em></td>
+       <td><a href="">Station Name</a></td>
+       <td></td>
+       </tr>
+
+       <td>07:00</td>
+       <td><em>Program Title</em></td>
+       <td><a href="">Station Name</a></td>
+       <td></td>
+       </tr>
+
+       <td>08:00</td>
+       <td><em>Program Title</em></td>
+       <td><a href="">Station Name</a></td>
+       <td></td>
+       </tr>
+
+       <td>09:00</td>
+       <td><em>Program Title</em></td>
+       <td><a href="">Station Name</a></td>
+       <td></td>
+       </tr>
+
+       <td>10:00</td>
+       <td><em>Program Title</em></td>
+       <td><a href="">Station Name</a></td>
+       <td></td>
+       </tr>
+
+       <td>11:00</td>
+       <td><em>Program Title</em></td>
+       <td><a href="">Station Name</a></td>
+       <td></td>
+       </tr>
+
+       <td>12:00</td>
+       <td><em>Program Title</em></td>
+       <td><a href="">Station Name</a></td>
+       <td></td>
+       </tr>
+
+    <tr>
+       <td>13:00</td>
+       <td><em>Program Title</em></td>
+       <td><a href="">Station Name</a></td>
+       <td></td>
+    </tr>
+
+    <tr>
+       <td>14:00</td>
+       <td><em>Program Title</em></td>
+       <td><a href="">Station Name</a></td>
+       <td></td>
+    </tr>
+
+    <tr>
+       <td>15:00</td>
+       <td><em>Program Title</em></td>
+       <td><a href="">Station Name</a></td>
+       <td></td>
+    </tr>
+
+    <td>16:00</td>
+    <td><em>Program Title</em></td>
+    <td><a href="">Station Name</a></td>
+    <td></td>
+    </tr>
+
+    <td>17:00</td>
+    <td><em>Program Title</em></td>
+    <td><a href="">Station Name</a></td>
+    <td></td>
+    </tr>
+
+    <td>18:00</td>
+    <td><em>Program Title</em></td>
+    <td><a href="">Station Name</a></td>
+    <td></td>
+    </tr>
+
+    <td>19:00</td>
+    <td><em>Program Title</em></td>
+    <td><a href="">Station Name</a></td>
+    <td></td>
+    </tr>
+
+    <td>20:00</td>
+    <td><em>Program Title</em></td>
+    <td><a href="">Station Name</a></td>
+    <td></td>
+    </tr>
+
+    <td>21:00</td>
+    <td><em>Program Title</em></td>
+    <td><a href="">Station Name</a></td>
+    <td></td>
+    </tr>
+
+    <td>22:00</td>
+    <td><em>Program Title</em></td>
+    <td><a href="">Station Name</a></td>
+    <td></td>
+    </tr>
+
+    <td>23:00</td>
+    <td><em>Program Title</em></td>
+    <td><a href="">Station Name</a></td>
+    <td></td>
+    </tr>
+
+    </tbody>
+ </table>
+
+ <br><br><br>
+
+  <div class="footer">
+    <a href="index.html">GRDS 425</a> | SPRING 2025
+    <span id="rightalign"><a href="info.html">Info</a> | <a href="schedule.html">Schedule</a></span>
+  </div>
+
+</body>
+
+</html>

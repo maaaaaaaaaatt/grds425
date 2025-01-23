@@ -121,3 +121,27 @@ audio {
 .grid-item:hover {
   text-decoration: underline;
 }
+
+/* Schedule Table */
+
+#schedule-title {
+  text-align: center;
+  margin-top: 2.5%;
+}
+table {
+  width: 95%;
+  margin: 25px auto;
+  border-spacing: 0;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  border: 1px solid black;
+  padding: 10px;
+  text-align: center;
+}
+
+th {
+  font-weight: bold;
+}
