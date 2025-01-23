@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Responsive Grid Website</title>
+  <link rel="stylesheet" href="style.css">
+  <script>
+    async function fetchIcecastMetadata() {
+      try {
+        const response = await fetch('https://stream.no-soap.net/status-json.xsl'); // Update this URL to your actual Icecast server
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        const data = await response.json();
+        console.log('Data:', data);
+
+        let nowPlaying = '';
+
+        // Check if the source is an array (multiple streams) or an object (single stream)
+        if (Array.isArray(data.icestats.source)) {
+          nowPlaying = data.icestats.source[0].title || 'No metadata available';
+        } else {
+          nowPlaying = data.icestats.source.title || 'No metadata available';
+        }
+
+        // Separate title and artist
+        let [songTitle, artistName] = nowPlaying.split(' - ');
+
+        // Add quotes around the song title
+        songTitle = `"${songTitle.trim()}"`;
+
+        // Display both song title and artist name
+        document.getElementById('metadata').textContent = `Now Playing: ${songTitle} - ${artistName.trim()}`;
+      } catch (error) {
+        console.error('Error fetching Icecast metadata:', error);
+        document.getElementById('metadata').textContent = 'Out to Lunch! Be Back Soon!';
+      }
+    }
+
+    // Fetch metadata every 10 seconds
+    setInterval(fetchIcecastMetadata, 10000);
+
+    // Initial fetch
+    fetchIcecastMetadata();
+
+          // JavaScript code to update the current time
+          function updateTime() {
+            // Get the current time
+            const now = new Date();
+            
+            // Format the time as HH:MM:SS
+            const timeString = now.toLocaleTimeString();
+
+            // Place the time string inside the div
+            document.getElementById('timestamp').textContent = timeString;
+        }
+
+        // Update the time immediately when the page loads
+        updateTime();
+
+        // Update the time every second (1000 milliseconds)
+        setInterval(updateTime, 1000);
+
+  </script>
+</head>
+
+<body>
+
+  <div id="header-container">
+    <div class="header">
+      <div class="title">
+        <a href="index.html">GRDS 425</a> | Spring 2025<br>Transmission//Reception
+      </div>
+
+      <div class="status">
+        <span class="light"></span>CURRENTLY BROADCASTING AT: A.M. 1660 kHz<br>
+        NEAR: KNOXVILLE, TN, U.S.A.
+      </div>
+    </div>
+
+    <div class="menu">
+      <marquee scrollamount="5"><span
+          id="metadata"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+          id="metadata">The Current Time is: <span id="timestamp"></span> in your location</span></marquee>
+
+      <audio class="header-audio" controls>
+        <source src="https://stream.no-soap.net:443/stream" type="audio/mpeg">
+        Your browser does not support the audio tag.
+      </audio>
+    </div>
+  </div>
+
+  <div class="grid-container">
+
+    <a href="/stations/lauren.html" class="grid-item">
+      <img src="wave.png">
+      <label>Louisa Benedict</label>
+    </a>
+
+    <a href="/stations/amari.html" class="grid-item">
+      <img src="wave.png">
+      <label>Natalie Broyles</label>
+    </a>
+
+    <a href="/stations/rachel.html" class="grid-item">
+      <img src="wave.png">
+      <label>Madilyn Carruthers</label>
+    </a>
+
+    <a href="/stations/ashlynn.html" class="grid-item">
+      <img src="wave.png">
+      <label>Ciara Chauncey</label>
+    </a>
+
+    <a href="/stations/lola.html" class="grid-item">
+      <img src="wave.png">
+      <label>Belle Clement</label>
+    </a>
+
+    <a href="/stations/kate.html" class="grid-item">
+      <img src="wave.png">
+      <label>Abbie Coleman</label>
+    </a>
+
+    <a href="/stations/hannah.html" class="grid-item">
+      <img src="wave.png">
+      <label>Emma Fingeret</label>
+    </a>
+
+    <a href="/stations/tess.html" class="grid-item">
+      <img src="wave.png">
+      <label>Tala Ghezawi</label>
+    </a>
+
+    <a href="/stations/keiko.html" class="grid-item">
+      <img src="wave.png">
+      <label>Xavier Girard</label>
+    </a>
+
+    <a href="/stations/ellie.html" class="grid-item">
+      <img src="wave.png">
+      <label>Dominik Kus</label>
+    </a>
+
+    <a href="/stations/audrey.html" class="grid-item">
+      <img src="wave.png">
+      <label>Nhi Lee</label>
+    </a>
+
+    <a href="/stations/holli.html" class="grid-item">
+      <img src="wave.png">
+      <label>Rachel Lipina</label>
+    </a>
+
+    <a href="/stations/ava.html" class="grid-item">
+      <img src="wave.png">
+      <label>Alex Long</label>
+    </a>
+
+    <a href="/stations/ava.html" class="grid-item">
+      <img src="wave.png">
+      <label>Elyse Lundberg</label>
+    </a>
+
+    <a href="/stations/ava.html" class="grid-item">
+      <img src="wave.png">
+      <label>Greta Morrow</label>
+    </a>
+
+    <a href="/stations/ava.html" class="grid-item">
+      <img src="wave.png">
+      <label>Katie Olinger</label>
+    </a>
+
+    <a href="/stations/ava.html" class="grid-item">
+      <img src="wave.png">
+      <label>Donatella Thomas</label>
+    </a>
+
+    <a href="/stations/ava.html" class="grid-item">
+      <img src="wave.png">
+      <label>Knox Thompson</label>
+    </a>
+
+  </div>
+
+  <div class="footer">
+    <span>GRDS425 | SPRING 2025</span>
+    <span id="rightalign">Info | Schedule</span>
+  </div>
+
+</body>
+
+</html>
