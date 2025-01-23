@@ -46,24 +46,6 @@
     // Initial fetch
     fetchIcecastMetadata();
 
-          // JavaScript code to update the current time
-          function updateTime() {
-            // Get the current time
-            const now = new Date();
-            
-            // Format the time as HH:MM:SS
-            const timeString = now.toLocaleTimeString();
-
-            // Place the time string inside the div
-            document.getElementById('timestamp').textContent = timeString;
-        }
-
-        // Update the time immediately when the page loads
-        updateTime();
-
-        // Update the time every second (1000 milliseconds)
-        setInterval(updateTime, 1000);
-
   </script>
 </head>
 
@@ -193,5 +175,25 @@
   </div>
 
 </body>
+
+<script>
+      // JavaScript code to update the current time
+      function updateTime() {
+      // Get the current time
+      const now = new Date();
+
+      // Format the time as HH:MM:SS
+      const timeString = now.toLocaleTimeString();
+
+      // Place the time string inside the div
+      document.getElementById('timestamp').textContent = timeString;
+    }
+
+    // Update the time immediately when the page loads
+    updateTime();
+
+    // Update the time every second (1000 milliseconds)
+    setInterval(updateTime, 1000);
+</script>
 
 </html>
