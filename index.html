@@ -8,44 +8,48 @@
   <link rel="stylesheet" href="style.css">
   <link rel="icon" type="image/x-icon" href="favicon-32x32.png">
   <script>
-    async function fetchIcecastMetadata() {
-      try {
-        const response = await fetch('http://stream.transmission-reception.com:8000/status-json.xsl'); // Update this URL to your actual Icecast server
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
+document.addEventListener("DOMContentLoaded", function () {
+    const nowListeningSchedule = {
+        0: "You are now listening to: X Radio",
+        1: "You are now listening to: sera.fm",
+        2: "Out to Lunch! Be back soon!",
+        3: "You are now listening to: WRNO",
+        4: "You are now listening to: Old Skull FM",
+        5: "Out to Lunch! Be back soon!",
+        6: "Out to Lunch! Be back soon!",
+        7: "Out to Lunch! Be back soon!",
+        8: "You are now listening to: Curious Corners Calmcast",
+        9: "You are now listening to: The Fuzz",
+        10: "You are now listening to: Java Jive",
+        11: "Out to Lunch! Be back soon!",
+        12: "You are now listening to: Chrome 92",
+        13: "You are now listening to: SPF 99",
+        14: "You are now listening to: AZA",
+        15: "You are now listening to: BNGE",
+        16: "You are now listening to: WCAD",
+        17: "You are now listening to: Knox X Knox",
+        18: "You are now listening to: Sample Radio",
+        19: "You are now listening to: The Nonsense Network",
+        20: "You are now listening to: 80.8 FM No Static",
+        21: "Out to Lunch! Be back soon!",
+        22: "You are now listening to: Orangutan Radio",
+        23: "Out to Lunch! Be back soon!"
+    };
 
-        const data = await response.json();
-        console.log('Data:', data);
+    function updateNowListening() {
+        const nowListeningElement = document.getElementById('now-listening');
+        if (!nowListeningElement) return; // Ensure element exists
 
-        let nowPlaying = '';
-
-        // Check if the source is an array (multiple streams) or an object (single stream)
-        if (Array.isArray(data.icestats.source)) {
-          nowPlaying = data.icestats.source[0].title || 'No metadata available';
-        } else {
-          nowPlaying = data.icestats.source.title || 'No metadata available';
-        }
-
-        // Separate title and artist
-        let [songTitle, artistName] = nowPlaying.split(' - ');
-
-        // Add quotes around the song title
-        songTitle = `"${songTitle.trim()}"`;
-
-        // Display both song title and artist name
-        document.getElementById('metadata').textContent = `Now Playing: ${songTitle} - ${artistName.trim()}`;
-      } catch (error) {
-        console.error('Error fetching Icecast metadata:', error);
-        document.getElementById('metadata').textContent = 'Out to Lunch! Be Back Soon!';
-      }
+        const hour = new Date().getHours();
+        nowListeningElement.textContent = nowListeningSchedule[hour];
     }
 
-    // Fetch metadata every 10 seconds
-    setInterval(fetchIcecastMetadata, 10000);
+    // Update immediately on load
+    updateNowListening();
 
-    // Initial fetch
-    fetchIcecastMetadata();
+    // Update every hour on the hour
+    setInterval(updateNowListening, 60 * 60 * 1000);
+});
 
   </script>
 </head>
@@ -65,9 +69,11 @@
     </div>
 
     <div class="menu">
-      <marquee scrollamount="5"><span
-          id="metadata"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          <span id="metadata">The Current Time is: <span id="timestamp"></span> in your location</span></marquee>
+      <marquee scrollamount="5">
+        <span id="now-listening"></span>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <span id="metadata">The Current Time is: <span id="timestamp"></span> in your location</span>
+        </marquee>
 
           <audio class="header-audio" controls>
             <source src="https://stream.no-soap.net:443/stream" type="audio/mpeg">

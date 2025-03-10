@@ -3,7 +3,8 @@
   src: url(TX-02-Trial-Regular.otf);
 }
 
-::-moz-selection { /* Code for Firefox */
+::-moz-selection {
+  /* Code for Firefox */
   color: white;
   background: orange;
 }
@@ -67,6 +68,10 @@ a:visited {
   text-transform: uppercase;
   display: flex;
   justify-content: space-between;
+}
+
+.now-listening .metadata {
+  margin-right: 25%
 }
 
 .header-audio {
@@ -241,6 +246,7 @@ audio {
   text-align: center;
   margin-top: 2.5%;
 }
+
 table {
   width: 95%;
   margin: 25px auto;
