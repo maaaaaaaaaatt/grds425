@@ -2,114 +2,114 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GRDS425</title>
-  <link rel="stylesheet" href="../style.css">
-  <link rel="icon" type="image/x-icon" href="favicon-32x32.png">
-  <script>
-document.addEventListener("DOMContentLoaded", function () {
-    const nowListeningSchedule = {
-        0: "You are now listening to: X Radio",
-        1: "You are now listening to: sera.fm",
-        2: "Out to Lunch! Be back soon!",
-        3: "You are now listening to: WRNO",
-        4: "You are now listening to: Old Skull FM",
-        5: "Out to Lunch! Be back soon!",
-        6: "Out to Lunch! Be back soon!",
-        7: "Out to Lunch! Be back soon!",
-        8: "You are now listening to: Curious Corners Calmcast",
-        9: "You are now listening to: The Fuzz",
-        10: "You are now listening to: Java Jive",
-        11: "You are now listening to: The Group Chat",
-        12: "You are now listening to: Chrome 92",
-        13: "You are now listening to: SPF 99",
-        14: "You are now listening to: AZA",
-        15: "You are now listening to: BNGE",
-        16: "You are now listening to: WCAD",
-        17: "You are now listening to: Knox X Knox",
-        18: "You are now listening to: Sample Radio",
-        19: "You are now listening to: The Nonsense Network",
-        20: "You are now listening to: 80.8 FM No Static",
-        21: "Out to Lunch! Be back soon!",
-        22: "You are now listening to: Orangutan Radio",
-        23: "Out to Lunch! Be back soon!"
-    };
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GRDS425</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="icon" type="image/x-icon" href="favicon-32x32.png">
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const nowListeningSchedule = {
+                0: "You are now listening to: X Radio",
+                1: "You are now listening to: sera.fm",
+                2: "Out to Lunch! Be back soon!",
+                3: "You are now listening to: WRNO",
+                4: "You are now listening to: Old Skull FM",
+                5: "Out to Lunch! Be back soon!",
+                6: "Out to Lunch! Be back soon!",
+                7: "Out to Lunch! Be back soon!",
+                8: "You are now listening to: Curious Corners Calmcast",
+                9: "You are now listening to: The Fuzz",
+                10: "You are now listening to: Java Jive",
+                11: "You are now listening to: The Group Chat",
+                12: "You are now listening to: Chrome 92",
+                13: "You are now listening to: SPF 99",
+                14: "You are now listening to: AZA",
+                15: "You are now listening to: BNGE",
+                16: "You are now listening to: WCAD",
+                17: "You are now listening to: Knox X Knox",
+                18: "You are now listening to: Sample Radio",
+                19: "You are now listening to: The Nonsense Network",
+                20: "You are now listening to: 80.8 FM No Static",
+                21: "Out to Lunch! Be back soon!",
+                22: "You are now listening to: Orangutan Radio",
+                23: "Out to Lunch! Be back soon!"
+            };
 
-    function updateNowListening() {
-        const nowListeningElement = document.getElementById('now-listening');
-        if (!nowListeningElement) return; // Ensure element exists
+            function updateNowListening() {
+                const nowListeningElement = document.getElementById('now-listening');
+                if (!nowListeningElement) return; // Ensure element exists
 
-        const hour = new Date().getHours();
-        nowListeningElement.textContent = nowListeningSchedule[hour];
-    }
+                const hour = new Date().getHours();
+                nowListeningElement.textContent = nowListeningSchedule[hour];
+            }
 
-    // Update immediately on load
-    updateNowListening();
+            // Update immediately on load
+            updateNowListening();
 
-    // Update every hour on the hour
-    setInterval(updateNowListening, 60 * 60 * 1000);
-});
-  </script>
+            // Update every hour on the hour
+            setInterval(updateNowListening, 60 * 60 * 1000);
+        });
+    </script>
 </head>
 
 <body>
 
-  <div id="header-container">
-    <div class="header">
-      <div class="title">
-        <a href="index.html">GRDS 425</a> | Spring 2025<br>Transmission//Reception
-      </div>
+    <div id="header-container">
+        <div class="header">
+            <div class="title">
+                <a href="index.html">GRDS 425</a> | Spring 2025<br>Transmission//Reception
+            </div>
 
-      <div class="status">
-        <span class="light"></span>CURRENTLY BROADCASTING AT: A.M. 1660 kHz<br>
-        NEAR: KNOXVILLE, TN, U.S.A.
-      </div>
+            <div class="status">
+                <span class="light"></span>CURRENTLY BROADCASTING AT: A.M. 1660 kHz<br>
+                NEAR: KNOXVILLE, TN, U.S.A.
+            </div>
+        </div>
+
+        <div class="menu">
+            <marquee scrollamount="5">
+                <span id="now-listening"></span>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <span id="metadata">The Current Time is: <span id="timestamp"></span> in your location</span>
+            </marquee>
+
+            <audio class="header-audio" controls>
+                <source src="https://stream.no-soap.net:443/stream" type="audio/mpeg">
+                Your browser does not support the audio tag.
+            </audio>
+        </div>
     </div>
-
-    <div class="menu">
-      <marquee scrollamount="5">
-        <span id="now-listening"></span>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          <span id="metadata">The Current Time is: <span id="timestamp"></span> in your location</span>
-        </marquee>
-
-          <audio class="header-audio" controls>
-            <source src="https://stream.no-soap.net:443/stream" type="audio/mpeg">
-            Your browser does not support the audio tag.
-        </audio>
-    </div>
-  </div>
 
     <div class="page-content">
-    
 
-        <h1 class="station-name">SPF99</h1>
 
-        <p class="station-description">SPF 99 Radio is the ultimate nostalgic soundtrack for a sunny, carefree
-            afternoon. Dedicated to spinning hits from before the 2000s, this station is a time capsule of feel-good
-            anthems, summer classics, and deep-cut gems that transport listeners to a world before streaming and
-            smartphones. True to its name, SPF 99 Radio isn’t just about music—it’s a call to step outside, soak up the
-            world beyond screens, and embrace the moment. At the heart of its ethos is Baz Luhrmann’s Everybody’s Free
-            (To Wear Sunscreen) speech, a recurring reminder to live fully, protect your skin, and savor life’s simple
-            joys. Whether you’re driving with the windows down, lounging in the park, or just dreaming of golden-hour
-            adventures, SPF 99 Radio keeps the vibe timeless and the energy endless. Put on SPF 99 Radio and soak up the
-            sun.</p>
+        <h1 class="station-name">AZA Radio</h1>
 
-            <div class="station-audio">
-                <div class="audio-title">Sound Collage:</div>
-                <audio controls>
-                    <source src="/stations/louisa/louisa_soundcollage.wav" type="audio/mpeg">
-                    Your browser does not support the audio tag.
-                  </audio>
+        <p class="station-description">Welcome to AZA Radio, the station where every day revolves around a new letter of
+            the alphabet, and each letter brings something fresh and exciting to your day! From A to Z, we’ve got the
+            perfect mix of upbeat tunes, feel-good classics, and everything in between to keep the vibes positive and
+            the energy high. Join Abbie each day for All Things A to Z, where she takes you on a musical journey through
+            each letter of the alphabet, along with her signature talk-show style! It's not just about the music; it's
+            about the conversations too. From fun facts and light-hearted banter to deeper discussions and quirky
+            trivia, Abbie makes sure every hour is filled with entertainment, laughs, and a little bit of everything.
+            It’s like a podcast meets your favorite radio station, keeping it fun, and totally engaging. Tune in to AZA
+            Radio for the best of both worlds: great music and an awesome chat!</p>
 
-                  <div class="audio-title">Radio Postcard:</div>
-                  <audio controls>
-                    <source src="horse.mp3" type="audio/mpeg">
-                    Your browser does not support the audio tag.
-                  </audio>
+        <div class="station-audio">
+            <div class="audio-title">Sound Collage:</div>
+            <audio controls>
+                <source src="/stations/louisa/louisa_soundcollage.wav" type="audio/mpeg">
+                Your browser does not support the audio tag.
+            </audio>
 
-            </div>
+            <div class="audio-title">Radio Postcard:</div>
+            <audio controls>
+                <source src="horse.mp3" type="audio/mpeg">
+                Your browser does not support the audio tag.
+            </audio>
+
+        </div>
 
     </div>
 
