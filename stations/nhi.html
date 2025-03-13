@@ -8,8 +8,8 @@
   <link rel="stylesheet" href="../style.css">
   <link rel="icon" type="image/x-icon" href="favicon-32x32.png">
   <script>
-document.addEventListener("DOMContentLoaded", function () {
-    const nowListeningSchedule = {
+    document.addEventListener("DOMContentLoaded", function () {
+      const nowListeningSchedule = {
         0: "You are now listening to: X Radio",
         1: "You are now listening to: sera.fm",
         2: "Out to Lunch! Be back soon!",
@@ -34,22 +34,22 @@ document.addEventListener("DOMContentLoaded", function () {
         21: "Out to Lunch! Be back soon!",
         22: "You are now listening to: Orangutan Radio",
         23: "Out to Lunch! Be back soon!"
-    };
+      };
 
-    function updateNowListening() {
+      function updateNowListening() {
         const nowListeningElement = document.getElementById('now-listening');
         if (!nowListeningElement) return; // Ensure element exists
 
         const hour = new Date().getHours();
         nowListeningElement.textContent = nowListeningSchedule[hour];
-    }
+      }
 
-    // Update immediately on load
-    updateNowListening();
+      // Update immediately on load
+      updateNowListening();
 
-    // Update every hour on the hour
-    setInterval(updateNowListening, 60 * 60 * 1000);
-});
+      // Update every hour on the hour
+      setInterval(updateNowListening, 60 * 60 * 1000);
+    });
   </script>
 </head>
 
@@ -58,7 +58,7 @@ document.addEventListener("DOMContentLoaded", function () {
   <div id="header-container">
     <div class="header">
       <div class="title">
-        <a href="index.html">GRDS 425</a> | Spring 2025<br>Transmission//Reception
+        <a href="https://transmission-reception.com">GRDS 425</a> | Spring 2025<br>Transmission//Reception
       </div>
 
       <div class="status">
@@ -75,61 +75,66 @@ document.addEventListener("DOMContentLoaded", function () {
         </marquee>
 
           <audio class="header-audio" controls>
-            <source src="https://stream.no-soap.net:443/stream" type="audio/mpeg">
+            <source src="https://a11.asurahosting.com:7090/radio.mp3" type="audio/mpeg">
             Your browser does not support the audio tag.
         </audio>
     </div>
   </div>
 
-    <div class="page-content">
-    
+  <div class="page-content">
 
-        <h1 class="station-name">The Nonsense Network</h1>
 
-        <p class="station-description">Welcome to The Nonsense Network, your go-to radio station for a delightful mix of novelty songs, parody tracks, humorous covers, mock commercials, and prank calls. Our vibrant visual identity features bright colors, bold typography, and whimsical graphics, creating an engaging and playful atmosphere. We encourage listener participation, inviting you to contribute your favorite jokes and be part of our interactive community. Committed to inclusive and respectful humor, The Nonsense Network aims to bring joy and laughter to all, ensuring everyone can enjoy the fun.</p>
+    <h1 class="station-name">The Nonsense Network</h1>
 
-            <div class="station-audio">
-                <div class="audio-title">Sound Collage:</div>
-                <audio controls>
-                    <source src="/stations/louisa/louisa_soundcollage.wav" type="audio/mpeg">
-                    Your browser does not support the audio tag.
-                  </audio>
+    <p class="station-description">Welcome to The Nonsense Network, your go-to radio station for a delightful mix of
+      novelty songs, parody tracks, humorous covers, mock commercials, and prank calls. Our vibrant visual identity
+      features bright colors, bold typography, and whimsical graphics, creating an engaging and playful atmosphere. We
+      encourage listener participation, inviting you to contribute your favorite jokes and be part of our interactive
+      community. Committed to inclusive and respectful humor, The Nonsense Network aims to bring joy and laughter to
+      all, ensuring everyone can enjoy the fun.</p>
 
-                  <div class="audio-title">Radio Postcard:</div>
-                  <audio controls>
-                    <source src="horse.mp3" type="audio/mpeg">
-                    Your browser does not support the audio tag.
-                  </audio>
+    <div class="station-audio">
+      <div class="audio-title">Sound Collage:</div>
+      <audio controls>
+        <source src="/stations/louisa/louisa_soundcollage.wav" type="audio/mpeg">
+        Your browser does not support the audio tag.
+      </audio>
 
-            </div>
+      <div class="audio-title">Radio Postcard:</div>
+      <audio controls>
+        <source src="horse.mp3" type="audio/mpeg">
+        Your browser does not support the audio tag.
+      </audio>
 
     </div>
 
-    <div class="footer">
-        <a href="index.html">GRDS 425</a> | SPRING 2025
-        <span id="rightalign"><a href="info.html">Info</a> | <a href="schedule.html">Schedule</a></span>
-    </div>
+  </div>
+
+  <div class="footer">
+    <a href="index.html">GRDS 425</a> | SPRING 2025
+    <span id="rightalign"><a href="info.html">Info</a> | <a href="schedule.html">Schedule</a></span>
+  </div>
 
 </body>
 
 <script>
-    // JavaScript code to update the current time
-    function updateTime() {
-        // Get the current time
-        const now = new Date();
+  // JavaScript code to update the current time
+  function updateTime() {
+    // Get the current time
+    const now = new Date();
 
-        // Format the time as HH:MM:SS
-        const timeString = now.toLocaleTimeString();
+    // Format the time as HH:MM:SS
+    const timeString = now.toLocaleTimeString();
 
-        // Place the time string inside the div
-        document.getElementById('timestamp').textContent = timeString;
-    }
+    // Place the time string inside the div
+    document.getElementById('timestamp').textContent = timeString;
+  }
 
-    // Update the time immediately when the page loads
-    updateTime();
+  // Update the time immediately when the page loads
+  updateTime();
 
-    // Update the time every second (1000 milliseconds)
-    setInterval(updateTime, 1000);
+  // Update the time every second (1000 milliseconds)
+  setInterval(updateTime, 1000);
 </script>
 
 </html>
