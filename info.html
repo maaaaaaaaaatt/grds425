@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GRDS425</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/x-icon" href="favicon-32x32.png">
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const nowListeningSchedule = {
+        0: "You are now listening to: X Radio",
+        1: "You are now listening to: sera.fm",
+        2: "Out to Lunch! Be back soon!",
+        3: "You are now listening to: WRNO",
+        4: "You are now listening to: Old Skull FM",
+        5: "Out to Lunch! Be back soon!",
+        6: "Out to Lunch! Be back soon!",
+        7: "Out to Lunch! Be back soon!",
+        8: "You are now listening to: Curious Corners Calmcast",
+        9: "You are now listening to: The Fuzz",
+        10: "You are now listening to: Java Jive",
+        11: "You are now listening to: The Group Chat",
+        12: "You are now listening to: Chrome 92",
+        13: "You are now listening to: SPF 99",
+        14: "You are now listening to: AZA",
+        15: "You are now listening to: BNGE",
+        16: "You are now listening to: WCAD",
+        17: "You are now listening to: Knox X Knox",
+        18: "You are now listening to: Sample Radio",
+        19: "You are now listening to: The Nonsense Network",
+        20: "You are now listening to: 80.8 FM No Static",
+        21: "Out to Lunch! Be back soon!",
+        22: "You are now listening to: Orangutan Radio",
+        23: "Out to Lunch! Be back soon!"
+      };
+
+      function updateNowListening() {
+        const nowListeningElement = document.getElementById('now-listening');
+        if (!nowListeningElement) return; // Ensure element exists
+
+        const hour = new Date().getHours();
+        nowListeningElement.textContent = nowListeningSchedule[hour];
+      }
+
+      // Update immediately on load
+      updateNowListening();
+
+      // Update every hour on the hour
+      setInterval(updateNowListening, 60 * 60 * 1000);
+    });
+  </script>
+</head>
+
+<body>
+
+  <div id="header-container">
+    <div class="header">
+      <div class="title">
+        <a href="https://transmission-reception.com">GRDS 425</a> | Spring 2025<br>Transmission//Reception
+      </div>
+
+      <div class="status">
+        <span class="light"></span>CURRENTLY BROADCASTING AT: A.M. 1660 kHz<br>
+        NEAR: KNOXVILLE, TN, U.S.A.
+      </div>
+    </div>
+
+    <div class="menu">
+      <marquee scrollamount="5">
+        <span id="now-listening"></span>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span id="metadata">The Current Time is: <span id="timestamp"></span> in your location</span>
+      </marquee>
+
+      <audio class="header-audio" controls>
+        <source src="https://a11.asurahosting.com:7090/radio.mp3" type="audio/mpeg">
+        Your browser does not support the audio tag.
+      </audio>
+    </div>
+  </div>
+
+  <span id="schedule-title">GRDS 425 - TRANSMISSION//RECEPTION<br>
+    UTK SCHOOL OF DESIGN SPRING 2025<br><br>
+  </span>
+
+  <span style="width: 75%; text-align: left; margin-left: 10%;">
+    In this experimental media studio, we will explore transmission and reception through a variety of graphic forms,
+    materials, and technologies. In particular, a goal of the class will be operating a DIY radio station within the
+    A+A. How might text and images express the sonic identity of a radio wave meant to be heard not seen? What happens
+    when graphics are designed to be transmitted via sonic patterns? How can visible and invisible design work in tandem
+    to communicate a message?
+    <br><br>
+    Using the concept of broadcasting as a framework, students will design both physical (fliers, posters, and beyond)
+    and invisible (radio broadcasts, sound design, and performance) media that engage with and complicate the act of
+    communicating, while thinking critically about the importance of medium and message in their work. We will research
+    and pull inspiration from moments of intervention and subversion in public communication, with a special focus on
+    underground, freeform, alternative, guerrilla, and pirate forms.
+  </span>
+
+
+  <br><br><br>
+
+  <div class=" footer">
+    <a href="index.html">GRDS 425</a> | SPRING 2025
+    <span id="rightalign"><a href="info.html">Info</a> | <a href="schedule.html">Schedule</a></span>
+  </div>
+
+</body>
+
+</html>
